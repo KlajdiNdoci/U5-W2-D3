@@ -24,7 +24,7 @@ public class Post {
     private String contenuto;
     private int tempoDiLettura;
     @ManyToOne
-    @JoinColumn(name = "utente_id")
+    @JoinColumn(name = "utente_id", nullable = false)
     private Utente utente;
     @CreationTimestamp
     private Date createdAt;

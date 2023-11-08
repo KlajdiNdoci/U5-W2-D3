@@ -30,5 +30,6 @@ public class Utente {
     private Date createdAt;
     @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE)
     @JsonIgnore
+    @ToString.Exclude
     private List<Post> posts;
 }
