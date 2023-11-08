@@ -1,6 +1,7 @@
 package KlajdiNdoci.U5W2D3.utente;
 
 import KlajdiNdoci.U5W2D3.post.Post;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class Utente {
     private String avatar;
     @CreationTimestamp
     private Date createdAt;
-//    @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE)
-//    private List<Post> posts;
+    @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Post> posts;
 }
