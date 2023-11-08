@@ -43,7 +43,8 @@ public class UtenteService {
     }
 
     public void findByIdAndDelete(int id) {
-        utenteRepository.findAll().removeIf(current -> current.getId() == id);
+       Utente found = this.findById(id);
+       utenteRepository.delete(found);
     }
 
     public Utente findByIdAndUpdate(int id, Utente body) {
@@ -52,7 +53,6 @@ public class UtenteService {
         for (Utente user : utenteRepository.findAll()) {
             if (user.getId() == id) {
                 found = user;
-                found.setId(id);
                 found.setNome(body.getNome());
                 found.setCognome(body.getCognome());
                 found.setAvatar("https://ui-avatars.com/api/?name=" + body.getNome() + "+" + body.getCognome());
@@ -63,7 +63,7 @@ public class UtenteService {
         if (found == null) {
             throw new NotFoundException(id);
         } else {
-            return found;
+            return utenteRepository.save(found);
         }
     }
 }
