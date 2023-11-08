@@ -1,6 +1,6 @@
-package KlajdiNdoci.U5W2D2.post;
+package KlajdiNdoci.U5W2D3.post;
 
-import KlajdiNdoci.U5W2D2.exceptions.NotFoundException;
+import KlajdiNdoci.U5W2D3.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

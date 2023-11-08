@@ -1,4 +1,4 @@
-package KlajdiNdoci.U5W2D2.exceptions;
+package KlajdiNdoci.U5W2D3.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package KlajdiNdoci.U5W2D2.post;
+package KlajdiNdoci.U5W2D3.post;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package KlajdiNdoci.U5W2D2.utente;
+package KlajdiNdoci.U5W2D3.utente;
 
 import lombok.Getter;
 import lombok.Setter;
