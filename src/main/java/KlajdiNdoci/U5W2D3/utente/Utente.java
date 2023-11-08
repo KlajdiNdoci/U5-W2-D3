@@ -13,8 +13,8 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @Entity
+@ToString
 @Table(name = "utenti")
 public class Utente {
     @Id
@@ -27,6 +27,6 @@ public class Utente {
     private String avatar;
     @CreationTimestamp
     private Date createdAt;
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "utente")
-    private List<Post> posts;
+//    @OneToMany(mappedBy = "utente", cascade = CascadeType.REMOVE)
+//    private List<Post> posts;
 }
