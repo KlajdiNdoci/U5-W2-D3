@@ -1,6 +1,11 @@
 package KlajdiNdoci.U5W2D3.utente;
 
 import KlajdiNdoci.U5W2D3.exceptions.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,23 +14,23 @@ import java.util.Random;
 
 @Service
 public class UtenteService {
-    private List<Utente> utenti = new ArrayList<>();
+    @Autowired
+    private UtenteRepository utenteRepository;
 
-    public List<Utente> getUtenti() {
-        return this.utenti;
+    public Page<Utente> getUtenti(int page, int size, String orderBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
+        return utenteRepository.findAll(pageable);
     }
 
     public Utente save(Utente body) {
-        Random rndm = new Random();
-        body.setId(rndm.nextLong(1000));
         body.setAvatar("https://ui-avatars.com/api/?name=" + body.getNome() + "+" + body.getCognome());
-        this.utenti.add(body);
+        utenteRepository.save(body);
         return body;
     }
 
     public Utente findById(long id) {
         Utente found = null;
-        for (Utente user : this.utenti) {
+        for (Utente user : utenteRepository.findAll()) {
             if (user.getId() == id) {
                 found = user;
             }
@@ -38,13 +43,13 @@ public class UtenteService {
     }
 
     public void findByIdAndDelete(int id) {
-        this.utenti.removeIf(current -> current.getId() == id);
+        utenteRepository.findAll().removeIf(current -> current.getId() == id);
     }
 
     public Utente findByIdAndUpdate(int id, Utente body) {
         Utente found = null;
 
-        for (Utente user : this.utenti) {
+        for (Utente user : utenteRepository.findAll()) {
             if (user.getId() == id) {
                 found = user;
                 found.setId(id);

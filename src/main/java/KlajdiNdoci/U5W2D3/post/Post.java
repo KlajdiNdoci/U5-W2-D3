@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -23,4 +26,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "utente_id")
     private Utente utente;
+    @CreationTimestamp
+    private Date createdAt;
 }
