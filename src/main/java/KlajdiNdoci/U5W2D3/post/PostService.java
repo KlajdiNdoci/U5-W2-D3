@@ -29,7 +29,7 @@ public class PostService {
         return body;
     }
 
-    public Post findById(long id) {
+    public Post findById(long id) throws NotFoundException {
         Post found = null;
         for (Post post : postRepository.findAll()) {
             if (post.getId() == id) {
@@ -43,12 +43,12 @@ public class PostService {
         }
     }
 
-    public void findByIdAndDelete(long id) {
+    public void findByIdAndDelete(long id) throws NotFoundException {
         Post found = this.findById(id);
         postRepository.delete(found);
     }
 
-    public Post findByIdAndUpdate(int id, Post body) {
+    public Post findByIdAndUpdate (int id, Post body) throws NotFoundException{
         Post found = null;
 
         for (Post post : postRepository.findAll()) {

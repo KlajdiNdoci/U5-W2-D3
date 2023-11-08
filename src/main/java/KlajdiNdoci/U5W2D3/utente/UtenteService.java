@@ -28,7 +28,7 @@ public class UtenteService {
         return body;
     }
 
-    public Utente findById(long id) {
+    public Utente findById(long id) throws NotFoundException{
         Utente found = null;
         for (Utente user : utenteRepository.findAll()) {
             if (user.getId() == id) {
@@ -42,12 +42,12 @@ public class UtenteService {
         }
     }
 
-    public void findByIdAndDelete(int id) {
+    public void findByIdAndDelete(int id)throws NotFoundException {
        Utente found = this.findById(id);
        utenteRepository.delete(found);
     }
 
-    public Utente findByIdAndUpdate(int id, Utente body) {
+    public Utente findByIdAndUpdate(int id, Utente body) throws NotFoundException{
         Utente found = null;
 
         for (Utente user : utenteRepository.findAll()) {
