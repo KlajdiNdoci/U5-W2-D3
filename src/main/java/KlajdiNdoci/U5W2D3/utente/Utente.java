@@ -1,9 +1,6 @@
 package KlajdiNdoci.U5W2D3.utente;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +16,7 @@ import java.time.LocalDate;
 @Table(name = "utenti")
 public class Utente {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
     private String cognome;

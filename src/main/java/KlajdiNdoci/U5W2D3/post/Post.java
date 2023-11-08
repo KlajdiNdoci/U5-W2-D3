@@ -16,7 +16,7 @@ import java.sql.Date;
 @Table(name = "posts")
 public class Post {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String categoria;
     private String titolo;
